@@ -7,17 +7,16 @@ In base a cosa scegliamo nella select vedremo i corrispondenti cd. */
 let app = new Vue({
     el: '#app',
     data: {
-        
+        disks: []
     },
     mounted() {
         axios
             .get('https://flynn.boolean.careers/exercises/api/array/music')
             .then(result => {
-                console.log(result.data.response[0]);
+                result.data.response.forEach(element => {
+                    this.disks.push(element);
+                });
             });
 
-    },
-    methods: {
-        
     }
 });
