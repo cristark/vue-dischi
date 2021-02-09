@@ -29,9 +29,12 @@
     <!-- MAIN -->
     <main>
         <section id="app">
+            <select v-model="genSelection">
+                <option @click="filterGen" v-for="gen in genres" :value="gen">{{gen}}</option>
+            </select>
             <div class="cds-container container">
                 <!-- Disco ad esempio -->
-                <div v-for="disco in disks" class="cd">
+                <div v-for="disco in disks" v-if="disco.visible == true" class="cd">
                     <img :src="disco.poster" :alt="disco.title">
                     <h3>{{disco.title}}</h3>
                     <span class="author">{{disco.author}}</span>
